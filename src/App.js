@@ -3,6 +3,7 @@ import {Route, Switch, Link} from 'react-router-dom'
 import Header from './components/header/header_component'
 import HomePage from './pages/homepage/homepage_component'
 import ShopPage from './pages/shop/shop_component'
+import SignInAndSignUpPage from './pages/sign_in-sign_up/sign_in-sign_up_component'
 import './App.css'
 
 
@@ -20,6 +21,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route path='/shop' component={ShopPage} />
+          <Route path='/signin' component={SignInAndSignUpPage} />
           <Route component={this.NoMatch} />
 
         </Switch>

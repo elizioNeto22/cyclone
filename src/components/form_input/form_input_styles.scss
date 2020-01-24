@@ -23,7 +23,7 @@ $main-color: black;
     border-radius: 0;
     border-bottom: 1px solid $sub-color;
     margin: 25px 0;
-
+    // focus quer dizr quando está selecionado, quando está focado no input, digitando é um foco
     &:focus {
       outline: none;
     }

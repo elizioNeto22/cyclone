@@ -8,7 +8,6 @@ import {auth, createUserProfileDocument} from './firebase/firebase.utils'
 
 import './App.css'
 
-
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -45,7 +44,8 @@ class App extends React.Component {
     <div>
       <h1>Página não Encontrada</h1>
       <Link to='/'>Home</Link>
-    </div>)
+    </div>
+  )
 
   render() {
     return (
@@ -56,9 +56,7 @@ class App extends React.Component {
           <Route path='/shop' component={ShopPage} />
           <Route path='/signin' component={SignInAndSignUpPage} />
           <Route component={this.NoMatch} />
-
         </Switch>
-  
       </div>
     )
   }

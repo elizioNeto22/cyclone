@@ -9,7 +9,7 @@ import CartDropdown from '../cart-dropdown/cart-dropdown.component'
 
 import './header_styles.scss'
 
-const Header = ({currentUser}) => (
+const Header = ({currentUser, hidden}) => (
   <div className="header-container">
     <Link className="logo-container" to='/'>
       <Logo className="logo" /> 
@@ -25,12 +25,18 @@ const Header = ({currentUser}) => (
       }
     <CartIcon />
     </div>
-    <CartDropdown />
+    {
+      hidden 
+      ? null 
+      : <CartDropdown /> 
+    }
   </div>
 )
 
-const mapStateToProps = (state) => ({
-  currentUser: state.user.currentUser
+// destructure nested values → get me currentUser off of the user which is being destructor off of the state
+const mapStateToProps = ({user: {currentUser}, cartDisplay: {hidden}}) => ({
+  currentUser,
+  hidden
 })
 
 

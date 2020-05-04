@@ -1,11 +1,12 @@
 .collection-preview {
   display: flex;
   flex-direction: column;
-  margin-bottom: 30px;
+  width: 92%;
+  margin: 0 auto 30px auto;
 
   .title {
     font-size: 28px;
-    margin-bottom: 25px;
+    margin: 0 0px 25px 20px;
   }
 
   .preview {

@@ -34,7 +34,7 @@ const Header = ({currentUser, hidden}) => (
 )
 
 // destructure nested values → get me currentUser off of the user which is being destructor off of the state
-const mapStateToProps = ({user: {currentUser}, cartDisplay: {hidden}}) => ({
+const mapStateToProps = ({user: {currentUser}, cart: {hidden}}) => ({
   currentUser,
   hidden
 })

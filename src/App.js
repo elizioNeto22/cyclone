@@ -27,7 +27,6 @@ class App extends React.Component {
         const userRef = await createUserProfileDocument(userAuth)
 
         userRef.onSnapshot((snapShot) => {
-          // não precisa retornar um obj porque o reducer já retorna um obj de state
           setCurrentUser({
             id: snapShot.id,
             ...snapShot.data(),
@@ -50,6 +49,8 @@ class App extends React.Component {
     </div>
   )
 
+  // /shop don't have EXACT is because  another pages
+  // like /shop/hats exists
   render() {
     return (
       <div>
@@ -57,7 +58,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/shop" component={ShopPage} />
-          <Route path="/checkout" component={CheckoutPage} />
+          <Route exact path="/checkout" component={CheckoutPage} />
           <Route
             exact
             path="/signin"

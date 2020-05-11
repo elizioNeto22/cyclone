@@ -2,14 +2,26 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 
-import { selectCartTotal } from '../../redux/cart/cart.selectors'
+import CheckoutItem from '../../components/checkout-item/checkout-item.component'
+
+import {
+  selectCartTotal,
+  selectCartItems,
+} from '../../redux/cart/cart.selectors'
 
 import './checkout.styles.scss'
 
-const CheckoutPage = ({ cartTotal }) => {
+/* 
+  the reselect lib was not used because here we want to re render all application so that
+  everything have an updated user cart
+*/
+
+const CheckoutPage = ({ cartTotal, cartItems }) => {
+  const renderCheckoutItem = () =>
+    cartItems.map((item) => <CheckoutItem key={item.id} item={item} />)
+
   return (
     <div className="checkout-page">
-      CHECKOUT PAGE
       <div className="checkout-header">
         <div className="header-block">
           <span>Product</span>
@@ -27,23 +39,19 @@ const CheckoutPage = ({ cartTotal }) => {
           <span>Remove</span>
         </div>
       </div>
-      <div className="total">TOTAL: ${cartTotal}</div>
+
+      {renderCheckoutItem()}
+
+      <div className="total">
+        <span>TOTAL: ${cartTotal}</span>
+      </div>
     </div>
   )
 }
 
 const mapStateToProps = createStructuredSelector({
   cartTotal: selectCartTotal,
+  cartItems: selectCartItems,
 })
 
 export default connect(mapStateToProps)(CheckoutPage)
-
-/*
-  ◙ import selectCartItems selector
-  ◙ make selectCartTotal to reduce the total
-
-  1• Total → selectCartTotal
-  2• Header
-  3• checkout items → selectCartItems 
-  4• remove items new redux combo 
-*/

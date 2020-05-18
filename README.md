@@ -1,7 +1,19 @@
-## This project still in development.
-**What was used until now: [you can see the progress here](https://cyclonestore.netlify.com)**
+> _This is a project in development_
 
-• React
-• Auth and Firestore from firebase
-• React Router 
-• Redux is the next step
+## You can checkout the progress here: **[Cyclone Store](https://cyclonestore.netlify.app)**
+
+| Technology         | State |
+| ------------------ | ----- |
+| react              | ✅    |
+| react-router       | ✅    |
+| redux              | ✅    |
+| redux-persist      | ✅    |
+| firebase/auth      | ✅    |
+| firebase/firestore | ✅    |
+| nested routing     | ⬜    |
+| stripe payment     | ⬜    |
+| styled components  | ⬜    |
+| redux + firebase   | ⬜    |
+| asynchronous redux | ⬜    |
+
+Used ✅ // To be used soon⬜

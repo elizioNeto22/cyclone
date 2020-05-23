@@ -1,26 +1,23 @@
-/* eslint-disable no-sequences */
-
-// import from ''
 import React from 'react'
-import { connect } from 'react-redux'
-import { createStructuredSelector } from 'reselect'
+import { Route } from 'react-router-dom'
 
-import { selectShopData } from '../../redux/shop/shop.selectors'
-import CollectionPreview from '../../components/collection_preview/collection_preview_component'
-// import './shop_styles.scss'
+import CollectionOverview from '../../components/collection-overview/collection-overview.component'
+import CollectionPage from '../collection/collection-page.component'
 
-const ShopPage = ({ shopData }) => {
+/* 
+!!!! The withRouter wasn't needed because the ShopPage is being nested in a Route on the App.js
+So Route automatically passes those three obj(history, location, match) as props
+*/
+const ShopPage = ({ match }) => {
   return (
     <div className="shop-page">
-      {shopData.map(({ id, ...otherCollections }) => (
-        <CollectionPreview key={id} {...otherCollections} />
-      ))}
+      {/* 
+        :categoryId → allows us to access this categoryId as parameter on the match object 
+      */}
+      <Route exact path={`${match.path}`} component={CollectionOverview} />
+      <Route path={`${match.path}/:collectionId`} component={CollectionPage} />
     </div>
   )
 }
 
-const mapStateToProps = createStructuredSelector({
-  shopData: selectShopData,
-})
-
-export default connect(mapStateToProps)(ShopPage)
+export default ShopPage

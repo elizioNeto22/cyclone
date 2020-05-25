@@ -1,21 +1,5 @@
 import { createSelector } from 'reselect'
 
-/*
- here we are mapping the the string value(from the match params) to the respective id
- because the shopData the collection id is a number so this is to convert params str to number 
- so is like when we get an match.params === sneakers
- selectCollection(sneakers) => find => collection.id(is an number) === COLLECTION_ID_MAP[2]
-  this will return the items in the sneakers collection
- */
-
-const COLLECTION_ID_MAP = {
-  hats: 1,
-  sneakers: 2,
-  jackets: 3,
-  womens: 4,
-  mens: 5,
-}
-
 const selectState = (state) => state.shop
 
 export const selectShopData = createSelector(
@@ -23,9 +7,12 @@ export const selectShopData = createSelector(
   (shop) => shop.shopData
 )
 
+// this is used to convert our collection objects to an array so the collection-overview
+// continue doing his job as already is
+export const selectShopDataArray = createSelector(
+  [selectShopData],
+  (shopData) => Object.keys(shopData).map((key) => shopData[key])
+)
+
 export const selectShopCollection = (collectionUrlParam) =>
-  createSelector([selectShopData], (shopData) =>
-    shopData.find(
-      (collection) => collection.id === COLLECTION_ID_MAP[collectionUrlParam]
-    )
-  )
+  createSelector([selectShopData], (shopData) => shopData[collectionUrlParam])

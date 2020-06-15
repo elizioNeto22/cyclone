@@ -1,13 +1,12 @@
 import React from 'react'
+
 import MainContainer from '../../components/main_container/main_container_component'
-
-import './homepage_styles.scss'
-
+import { HomepageContainer } from './homepage.styles'
 
 const HomePage = () => (
-  <div className="homepage">
-      <MainContainer />    
-  </div>
+  <HomepageContainer isMobile={false} className="homepage">
+    <MainContainer />
+  </HomepageContainer>
 )
 
 export default HomePage
